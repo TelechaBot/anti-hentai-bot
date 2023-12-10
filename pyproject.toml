@@ -3,7 +3,7 @@ name = ""
 version = ""
 description = ""
 authors = [
-    { name = "github", email = "none@none.none" },
+    { name = "sudoskys", email = "coldlando@hotmail.com" },
 ]
 dependencies = [
     "pydantic<3.0.0,>=2.0.0",
