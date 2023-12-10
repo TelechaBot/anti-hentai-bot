@@ -11,6 +11,7 @@ from telebot.async_telebot import AsyncTeleBot
 from telebot.asyncio_helper import ApiTelegramException
 from telebot.asyncio_storage import StateMemoryStorage
 
+from app_conf import settings
 from setting.telegrambot import BotSetting
 
 StepCache = StateMemoryStorage()
@@ -48,6 +49,14 @@ class BotRunner(object):
                 ),
                 parse_mode="MarkdownV2",
             )
+
+        @bot.message_handler(
+            content_types=["photo", "document"], chat_types=["supergroup", "group"]
+        )
+        async def handle_group_photo(message: types.Message):
+            if not settings.rule.check_spoiler_photo:
+                if message.has_media_spoiler:
+                    return logger.info("Ignore Spoiler Photos")
 
         try:
             await bot.polling(

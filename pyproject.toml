@@ -15,9 +15,10 @@ dependencies = [
     "httpx<1.0.0,>=0.25.1",
     "shortuuid<2.0.0,>=1.0.11",
     "asgiref<4.0.0,>=3.7.2",
-    "aiohttp>=3.9.0",
+    "aiohttp>=3.9.1",
     "dynaconf>=3.2.4",
     "pre-commit>=3.5.0",
+    "autometrics>=1.0.0",
 ]
 
 

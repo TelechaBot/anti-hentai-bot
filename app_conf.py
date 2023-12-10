@@ -15,6 +15,15 @@ settings = Dynaconf(
 settings.validators.register(
     Validator("app.debug", condition=lambda v: isinstance(v, bool), env="DEBUG"),
 )
+
+settings.validators.register(
+    Validator(
+        "rule.check_spoiler_photo",
+        condition=lambda v: isinstance(v, bool),
+        env="CHECK_SPOILER_PHOTO",
+    )
+)
+
 # raises after all possible errors are evaluated
 try:
     settings.validators.validate_all()

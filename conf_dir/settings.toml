@@ -1,2 +1,6 @@
 [app]
 debug = false
+
+
+[rule]
+check_spoiler_photo = false
