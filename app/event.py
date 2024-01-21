@@ -30,15 +30,13 @@ def build_risk_tag(tags):
         _risk.append("6+girls")
     if "multiple_girls" in tags:
         _risk.append("multiple_girls")
-    if "censored" in tags:
-        _risk.append("censored")
     return _risk
 
 
 async def pipeline_pass(trace_id, content: Union[IO, TextIOBase]) -> CensorResult:
     content.seek(0)
     anime_score = ANIME.predict_image(content=content)
-    if anime_score > 50:
+    if anime_score > 15:
         logger.info(f"Censored {trace_id},score {anime_score}")
         return CensorResult(anime_score=anime_score)
     content.seek(0)
