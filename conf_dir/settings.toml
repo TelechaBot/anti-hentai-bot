@@ -1,6 +1,11 @@
 [app]
 debug = false
 
-
 [rule]
-check_spoiler_photo = false
+check_spoiler_photo = true
+only_report = false
+
+
+[mode]
+only_white = false
+white_group = []
