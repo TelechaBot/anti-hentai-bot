@@ -121,10 +121,13 @@ class BotRunner(object):
             if settings.mode.only_white:
                 if message.chat.id not in settings.mode.white_group:
                     return logger.info(f"White List Out {message.chat.id}")
+
             if not message.reply_to_message:
                 return await bot.reply_to(
-                    message, text="🍡 please reply to spam message with this command"
+                    message,
+                    text=f"🍡 please reply to spam message with this command ({message.chat.id})",
                 )
+            logger.info(f"Report in {message.chat.id} {message.from_user.id}")
             reply_message = message.reply_to_message
             reply_message_ph = reply_message.photo
             reply_message_doc = reply_message.document
