@@ -12,8 +12,8 @@ Identify child pornography and Ban them on Telegram Group.
 ## Usage
 
 ```shell
-git clone
-cd
+git clone https://github.com/TelechaBot/anti-hentai-bot
+cd anti-hentai-bot
 cp .env.exp .env
 nano .env
 ```
