@@ -35,6 +35,7 @@ class WdTagger(BaseSettings):
             logger.warning(
                 f"wd_api_endpoint {self.wd_api_endpoint} is not available, please check the server is running {e}"
             )
+            raise e
 
 
 load_dotenv()
