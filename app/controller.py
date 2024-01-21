@@ -88,22 +88,7 @@ class BotRunner(object):
                 ),
                 formatting.mcode(reason),
             ]
-            deleted = False
-            try:
-                await self.bot.delete_message(
-                    chat_id=message.chat.id, message_id=message.message_id
-                )
-            except Exception as er:
-                logger.error(er)
-            else:
-                deleted = True
 
-            if not deleted:
-                reply_messages.append("🔨 Delete Failed")
-                reply_messages.append(
-                    " "
-                    + formatting.mlink("admin", f"tg://user?id={BotSetting.owner_id}")
-                )
             reason_detail = formatting.format_text(*reply_messages, separator=" ")
             try:
                 await self.bot.reply_to(
