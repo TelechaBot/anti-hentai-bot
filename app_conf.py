@@ -18,6 +18,12 @@ settings.validators.register(
 
 settings.validators.register(
     Validator(
+        "mode.only_white", condition=lambda v: isinstance(v, bool), env="ONLY_WHITE"
+    ),
+)
+
+settings.validators.register(
+    Validator(
         "rule.check_spoiler_photo",
         condition=lambda v: isinstance(v, bool),
         env="CHECK_SPOILER_PHOTO",
