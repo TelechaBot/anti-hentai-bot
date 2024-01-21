@@ -80,15 +80,42 @@ class BotRunner(object):
             )
 
         async def delete_or_warn(message: types.Message, reason: str):
-            reason_detail = f"For User {message.from_user.last_name}[{message.from_user.id}]\n{reason}"
+            reply_messages = [
+                formatting.mbold("🔖 自动预警 "),
+                formatting.mlink(
+                    message.from_user.full_name[:10],
+                    f"tg://user?id={message.from_user.id}",
+                ),
+                formatting.mcode(reason),
+            ]
+            deleted = False
             try:
                 await self.bot.delete_message(
                     chat_id=message.chat.id, message_id=message.message_id
                 )
             except Exception as er:
-                logger.exception(er)
+                logger.error(er)
+            else:
+                deleted = True
             try:
-                await self.bot.reply_to(message=message, text=reason_detail)
+                admins = await self.bot.get_chat_administrators(chat_id=message.chat.id)
+            except Exception as er:
+                admins = []
+                logger.error(er)
+            if not deleted:
+                reply_messages.append("🔨 Delete Failed")
+                for admin in admins[:4]:
+                    reply_messages.append(
+                        " "
+                        + formatting.mlink(
+                            admin.user.full_name[:10], f"tg://user?id={admin.user.id}"
+                        )
+                    )
+            reason_detail = formatting.format_text(*reply_messages, separator=" ")
+            try:
+                await self.bot.reply_to(
+                    message=message, text=reason_detail, parse_mode="MarkdownV2"
+                )
             except Exception as er:
                 logger.exception(er)
             return True
