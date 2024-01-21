@@ -1,14 +1,22 @@
-# Anime Tag Bot
+# Lolicon correction
 
 ![Ruff](https://github.com/TelechaBot/anime-tag-bot/actions/workflows/ruff.yml/badge.svg)
 
+> [!IMPORTANT]
+> Deploy With [wd14-tagger-server](https://github.com/LlmKira/wd14-tagger-server)
+
 ## Project Description
 
-Tag Picture In Telegram Group.
+Identify child pornography and Ban them on Telegram Group.
 
 ## Usage
 
-Provide instructions on how to use your project. For example:
+```shell
+git clone
+cd
+cp .env.exp .env
+nano .env
+```
 
 ```shell
 pip install pdm
