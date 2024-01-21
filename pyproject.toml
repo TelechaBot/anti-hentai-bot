@@ -26,7 +26,6 @@ dependencies = [
     "opencv-python>=4.8.1.78",
     "anime-identify>=0.1.0",
     "aiofiles>=23.2.1",
-    "instructor>=0.4.7",
 ]
 
 
