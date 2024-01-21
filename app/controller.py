@@ -97,20 +97,13 @@ class BotRunner(object):
                 logger.error(er)
             else:
                 deleted = True
-            try:
-                admins = await self.bot.get_chat_administrators(chat_id=message.chat.id)
-            except Exception as er:
-                admins = []
-                logger.error(er)
+
             if not deleted:
                 reply_messages.append("🔨 Delete Failed")
-                for admin in admins[:4]:
-                    reply_messages.append(
-                        " "
-                        + formatting.mlink(
-                            admin.user.full_name[:10], f"tg://user?id={admin.user.id}"
-                        )
-                    )
+                reply_messages.append(
+                    " "
+                    + formatting.mlink("admin", f"tg://user?id={BotSetting.owner_id}")
+                )
             reason_detail = formatting.format_text(*reply_messages, separator=" ")
             try:
                 await self.bot.reply_to(

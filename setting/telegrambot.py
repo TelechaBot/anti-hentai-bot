@@ -22,6 +22,7 @@ class TelegramBot(BaseSettings):
     bot_link: Optional[str] = Field(None, validation_alias="TELEGRAM_BOT_LINK")
     bot_id: Optional[str] = Field(None, validation_alias="TELEGRAM_BOT_ID")
     bot_username: Optional[str] = Field(None, validation_alias="TELEGRAM_BOT_USERNAME")
+    owner_id: Optional[str] = Field(None, validation_alias="TELEGRAM_BOT_OWNER_ID")
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )
